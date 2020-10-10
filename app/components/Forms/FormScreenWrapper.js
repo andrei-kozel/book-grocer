@@ -26,7 +26,8 @@ export default FormScreenWrapper
 
 const styles = StyleSheet.create({
   circleBackButton: {
-    marginVertical: 10
+    padding: 10,
+    marginLeft: -10
   },
   container: {
     paddingHorizontal: 20,
