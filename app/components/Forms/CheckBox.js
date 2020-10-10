@@ -5,27 +5,26 @@ import { useFormikContext } from 'formik'
 
 import colors from '../../config/colors'
 import Text from '../Text'
+import { RectButton } from 'react-native-gesture-handler'
 
 // TODO implement single checkbox Formik
 const CheckBox = ({ title, name }) => {
-  const [checked, setChecked] = useState(false)
-  const { handleChange, values } = useFormikContext()
+  const { setFieldValue, values } = useFormikContext()
+
+  const [checked, setChecked] = useState(values[name])
 
   const handleCheck = () => {
     setChecked(!checked)
-    handleChange(name, !checked)
+    setFieldValue(name, !values[name])
   }
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={handleCheck}
-      name={name}>
-      <View style={[styles.checkBox, checked ? styles.checked : null]}>
+    <RectButton style={styles.container} onPress={handleCheck} name={name}>
+      <View style={[styles.checkBox, values[name] ? styles.checked : null]}>
         <MaterialCommunityIcons name="check" size={20} color={colors.white} />
       </View>
       <Text style={styles.text}>{title}</Text>
-    </TouchableOpacity>
+    </RectButton>
   )
 }
 
