@@ -18,15 +18,18 @@ const LoginNavigartion = () => {
       />
       <Login.Screen
         options={{
-          headerStyle: {
-            elevation: 0
-          },
-          headerTitle: false
+          headerShown: false
         }}
         name="SignIn"
         component={SignIn}
       />
-      <Login.Screen name="SignUp" component={SignUp} />
+      <Login.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{
+          headerShown: false
+        }}
+      />
     </Login.Navigator>
   )
 }

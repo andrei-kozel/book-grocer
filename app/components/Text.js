@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import colors from '../config/colors'
 
-const AppText = ({ children }) => {
-  return <Text style={styles.text}>{children}</Text>
+const AppText = ({ style, children }) => {
+  return <Text style={[styles.text, style]}>{children}</Text>
 }
 
 export default AppText

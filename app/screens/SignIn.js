@@ -1,50 +1,57 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+import * as Yup from 'yup'
 
-import Button from '../components/Button'
+import SubmitButton from '../components/Forms/SubmitButton'
 import CheckBox from '../components/Forms/CheckBox'
-import HeaderTitle from '../components/HeaderTitle'
-import TextInput from '../components/TextInput'
-import colors from '../config/colors'
 import Text from '../components/Text'
+import Form from '../components/Forms/Form'
+import FormField from '../components/Forms/FormField'
+import FormScreenWrapper from '../components/Forms/FormScreenWrapper'
 
-const SignIn = () => {
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(4).label('Password ')
+})
+
+const SignIn = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <HeaderTitle>Sign In</HeaderTitle>
-      <TextInput
-        icon="email"
-        placeholder="Email Address"
-        autoCorrect={false}
-        autoCapitalize="none"
-        keyboardType="email-address"
-        textContentType="emailAddress"
-      />
-      <TextInput
-        icon="onepassword"
-        placeholder="Password"
-        type="password"
-        autoCorrect={false}
-        secureTextEntry
-        textContentType="password"
-      />
-      <View style={styles.subFormContainer}>
-        <CheckBox title="Stay Logged In" />
-        <Text>Forgot Your Password?</Text>
-      </View>
-      <Button title="Sign In" disabled={true} />
-    </View>
+    <FormScreenWrapper title="Sign In" navigation={navigation}>
+      <Form
+        initialValues={{ email: '', password: ' ' }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}>
+        <FormField
+          name="email"
+          icon="email"
+          placeholder="Email Address"
+          autoCorrect={false}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+        />
+        <FormField
+          name="password"
+          icon="lock"
+          placeholder="Password"
+          type="password"
+          autoCorrect={false}
+          secureTextEntry
+          textContentType="password"
+        />
+        <View style={styles.subFormContainer}>
+          <CheckBox title="Stay Logged In" />
+          <Text>Forgot Your Password?</Text>
+        </View>
+        <SubmitButton title="Sign In" />
+      </Form>
+    </FormScreenWrapper>
   )
 }
 
 export default SignIn
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 20,
-    backgroundColor: colors.white,
-    flex: 1
-  },
   subFormContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
