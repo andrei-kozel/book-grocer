@@ -12,14 +12,15 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
-  password: Yup.string().required().min(4).label('Password ')
+  password: Yup.string().required().min(4).label('Password '),
+  checked: Yup.boolean()
 })
 
 const SignIn = ({ navigation }) => {
   return (
     <FormScreenWrapper title="Sign In" navigation={navigation}>
       <Form
-        initialValues={{ email: '', password: ' ' }}
+        initialValues={{ email: '', password: '', checked: false }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}>
         <FormField
@@ -41,7 +42,7 @@ const SignIn = ({ navigation }) => {
           textContentType="password"
         />
         <View style={styles.subFormContainer}>
-          <CheckBox title="Stay Logged In" />
+          <CheckBox title="Stay Logged In" name="checked" />
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate('ForgotPassword')}>
             <Text>Forgot Your Password?</Text>

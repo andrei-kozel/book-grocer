@@ -13,8 +13,6 @@ const fetchFonts = () => {
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false)
 
-  console.log(fetchFonts)
-
   if (!fontLoaded) {
     fetchFonts().then(() => setFontLoaded(true))
     return null

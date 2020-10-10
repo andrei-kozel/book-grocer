@@ -16,7 +16,8 @@ const validationSchema = Yup.object().shape({
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), null],
     'Passwords must match'
-  )
+  ),
+  checked: Yup.boolean()
 })
 
 const SignUp = ({ navigation }) => {
@@ -27,7 +28,8 @@ const SignUp = ({ navigation }) => {
           name: '',
           email: '',
           password: ' ',
-          passwordConfirmation: ''
+          passwordConfirmation: '',
+          checked: false
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}>
@@ -68,7 +70,10 @@ const SignUp = ({ navigation }) => {
           textContentType="password"
         />
         <View style={styles.subFormContainer}>
-          <CheckBox title="Please sign me up for the monthly newsletter." />
+          <CheckBox
+            title="Please sign me up for the monthly newsletter."
+            name="checked"
+          />
         </View>
         <SubmitButton title="Sign Up" />
       </Form>

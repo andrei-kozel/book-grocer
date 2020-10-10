@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useFormikContext } from 'formik'
 
 import colors from '../../config/colors'
 import Text from '../Text'
 
-const CheckBox = ({ title }) => {
-  const [isChecked, setIsChecked] = useState(false)
+// TODO implement single checkbox Formik
+const CheckBox = ({ title, name }) => {
+  const [checked, setChecked] = useState(false)
+  const { handleChange, values } = useFormikContext()
 
-  const handlePress = () => {
-    setIsChecked((prevState) => !prevState)
+  const handleCheck = () => {
+    setChecked(!checked)
+    handleChange(name, !checked)
   }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => handlePress()}>
-      <View style={[styles.checkBox, isChecked ? styles.checked : null]}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={handleCheck}
+      name={name}>
+      <View style={[styles.checkBox, checked ? styles.checked : null]}>
         <MaterialCommunityIcons name="check" size={20} color={colors.white} />
       </View>
       <Text style={styles.text}>{title}</Text>
