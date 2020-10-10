@@ -7,7 +7,6 @@ import HeaderTitle from '../HeaderTitle'
 import colors from '../../config/colors'
 
 const FormScreenWrapper = ({ navigation, title, children }) => {
-  console.log(navigation)
   return (
     <View style={styles.container}>
       <Screen>

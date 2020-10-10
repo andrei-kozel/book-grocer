@@ -1,17 +1,23 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useState } from 'react'
 import * as Font from 'expo-font'
-import { AppLoading } from 'expo'
 
 import MainNavigator from './app/navigation/MainNavigator'
 
-export default function App() {
-  const [isLoaded] = Font.useFonts({
+const fetchFonts = () => {
+  return Font.loadAsync({
     'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
     'OpenSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf')
   })
-  if (!isLoaded) {
-    return <AppLoading />
+}
+export default function App() {
+  const [fontLoaded, setFontLoaded] = useState(false)
+
+  console.log(fetchFonts)
+
+  if (!fontLoaded) {
+    fetchFonts().then(() => setFontLoaded(true))
+    return null
   } else {
     return (
       <>

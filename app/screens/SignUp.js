@@ -1,12 +1,10 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 import SubmitButton from '../components/Forms/SubmitButton'
 import CheckBox from '../components/Forms/CheckBox'
-import Text from '../components/Text'
 import Form from '../components/Forms/Form'
 import FormField from '../components/Forms/FormField'
 import FormScreenWrapper from '../components/Forms/FormScreenWrapper'
@@ -70,8 +68,7 @@ const SignUp = ({ navigation }) => {
           textContentType="password"
         />
         <View style={styles.subFormContainer}>
-          <CheckBox title="Stay Logged In" />
-          <Text>Forgot Your Password?</Text>
+          <CheckBox title="Please sign me up for the monthly newsletter." />
         </View>
         <SubmitButton title="Sign Up" />
       </Form>
