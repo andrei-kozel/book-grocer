@@ -20,7 +20,11 @@ const SignIn = ({ navigation }) => {
   return (
     <FormScreenWrapper title="Sign In" navigation={navigation}>
       <Form
-        initialValues={{ email: '', password: '', checked: false }}
+        initialValues={{
+          email: '',
+          password: '',
+          checked: false
+        }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}>
         <FormField
