@@ -1,18 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import colors from '../config/colors'
 
-const HeaderTitle = ({ children, style }) => {
+const TitleText = ({ style, children }) => {
   return <Text style={[styles.text, style]}>{children}</Text>
 }
 
-export default HeaderTitle
+export default TitleText
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
     color: colors.dark,
-    fontFamily: 'OpenSans-Bold',
-    marginBottom: 20
+    fontSize: 16
   }
 })

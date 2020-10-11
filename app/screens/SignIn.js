@@ -25,7 +25,10 @@ const SignIn = ({ navigation }) => {
           password: '',
           checked: false
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          console.log(values)
+          navigation.navigate('Home')
+        }}
         validationSchema={validationSchema}>
         <FormField
           name="email"

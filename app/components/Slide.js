@@ -47,10 +47,5 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center'
-    // width: 320,
-    // height: 250,
-    // marginTop: 116,
-    // justifyContent: 'center',
-    // alignItems: 'center'
   }
 })

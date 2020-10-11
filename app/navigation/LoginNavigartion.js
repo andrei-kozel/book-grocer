@@ -11,33 +11,11 @@ const Login = createStackNavigator()
 
 const LoginNavigartion = () => {
   return (
-    <Login.Navigator>
-      <Login.Screen
-        options={{ headerShown: false }}
-        name="Onboarding"
-        component={Onboarding}
-      />
-      <Login.Screen
-        options={{
-          headerShown: false
-        }}
-        name="SignIn"
-        component={SignIn}
-      />
-      <Login.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{
-          headerShown: false
-        }}
-      />
-      <Login.Screen
-        name="ForgotPassword"
-        component={ForgotPassworScreen}
-        options={{
-          headerShown: false
-        }}
-      />
+    <Login.Navigator screenOptions={{ headerShown: false }}>
+      <Login.Screen name="Onboarding" component={Onboarding} />
+      <Login.Screen name="SignIn" component={SignIn} />
+      <Login.Screen name="SignUp" component={SignUp} />
+      <Login.Screen name="ForgotPassword" component={ForgotPassworScreen} />
     </Login.Navigator>
   )
 }
