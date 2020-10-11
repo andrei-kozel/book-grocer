@@ -5,7 +5,6 @@ import { useFormikContext } from 'formik'
 
 import colors from '../../config/colors'
 import Text from '../Text'
-import { RectButton } from 'react-native-gesture-handler'
 
 // TODO implement single checkbox Formik
 const CheckBox = ({ title, name }) => {
@@ -19,12 +18,15 @@ const CheckBox = ({ title, name }) => {
   }
 
   return (
-    <RectButton style={styles.container} onPress={handleCheck} name={name}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={handleCheck}
+      name={name}>
       <View style={[styles.checkBox, values[name] ? styles.checked : null]}>
         <MaterialCommunityIcons name="check" size={20} color={colors.white} />
       </View>
       <Text style={styles.text}>{title}</Text>
-    </RectButton>
+    </TouchableOpacity>
   )
 }
 
