@@ -94,14 +94,13 @@ const HomeScreen = () => {
                 return <View key={index} style={{ width: (width - 190) / 2 }} />
               }
               return (
-                <View style={{ width: 190 }}>
+                <View style={{ width: 190 }} key={item.title}>
                   <Animated.View
                     style={{
                       paddingTop: 40,
                       transform: [{ translateY }, { scale }]
                     }}>
                     <BookCard
-                      key={item.title}
                       image={item.image}
                       title={item.title}
                       author={item.author}
